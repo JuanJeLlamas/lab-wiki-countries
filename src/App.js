@@ -1,25 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useState } from 'react';
+import { useEffect } from "react"
+import './App.css'
+import  {Route , Routes} from "react-router-dom"
+// import countries from "./countries.json"
+import Navbar from './components/Navbar';
+import CountriesList from './components/CountriesList';
+import CountryDetails from './components/CountriesDetails';
+// import axios, { all } from "axios"
+import countries from "./countries.json"
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
+
+  const [allCountries, setallCountries] = useState(countries);
+
+//   useEffect(() => {
+//     // buscar la info de la API
+//     // usaremos axios para buscar la data (podrias usar fetch)
+//     // el momento en el que SIEMPRE debemos contactar a una API para recibir data es componentDidMount
+//     axios.get("https://ih-countries-api.herokuapp.com/countries")
+//     .then((response) => {
+//       console.log(response.data)
+//       setallCountries(response.data.name)
+//     })
+//     .catch(() => {
+
+//     })
+//   }, [])
+
+
+
+//   return (
+//     <div className="App">
+      
+//       <Navbar/>
+//       <CountriesList allCountries={allCountries}/>
+//     </div>
+//   );
+// }
+
+
+return (
+<div>
+<Navbar/>
+<CountriesList allCountries={allCountries}/>
+
+<CountryDetails/>
+
+</div>
+
+
+
+)
+}
 export default App;
